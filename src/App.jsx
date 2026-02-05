@@ -1,5 +1,5 @@
 import { useRef } from "react";
-
+import {useTheme} from "./ThemeContext";
 import Navbar from "./Navbar";
 import Specimens from "./Specimens";
 
@@ -16,6 +16,7 @@ function makeSpecimens(n = NUM_SPECIMENS, k = GLOW_CHANCE) {
  * Turn the light on and off to see which ones glow!
  */
 export default function App() {
+  const {theme} = useTheme();
   // `useRef` allows our component to "remember" these arrays without
   // randomly re-generating them on every render.
   // `useRef` returns a mutable object { current: value }
@@ -24,7 +25,7 @@ export default function App() {
   const fungi = useRef(makeSpecimens());
 
   return (
-    <div>
+    <div className={theme}>
       <div className="wrapper">
         <Navbar />
         <main>
